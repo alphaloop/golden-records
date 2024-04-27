@@ -48,7 +48,7 @@ class Client():
         }
 
         if params:
-            parameters = parameters + params
+            parameters = parameters | params
 
         self._do_not_exceed_rate_limit()
 
