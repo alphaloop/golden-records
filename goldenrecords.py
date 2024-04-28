@@ -27,9 +27,18 @@ class Client():
         has_more_pages = True
 
         while(has_more_pages):
+            
             response = self._request(endpoint, pageNumber=page, params=params)
             has_more_pages = json.loads(response.headers['Paging-Headers'])["nextPage"] == 'Yes'
-            results = results + json.loads(response.text)
+
+            try:
+                parsed = json.loads(response.text)
+            except:
+                raise RequestError('Error parsing response: ' + response.text)
+            
+            if parsed:
+              results = results + parsed
+            
             page = page + 1
 
         return results
