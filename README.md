@@ -21,10 +21,10 @@ client = Client(API_KEY)
 
 Get all types of archery (call `GET /api/types`):
 ```
-types = client.call_api('types')
+types = client.call_endpoint('types')
 ```
 
 Get all scores for an archer with a given UID (call `GET /api/scores?id=<archer id>`):
 ```
-scores = client.call_api('scores', {'id': '<archer id>'})
+scores = client.call_endpoint('scores', {'id': '<archer id>'})
 ```
